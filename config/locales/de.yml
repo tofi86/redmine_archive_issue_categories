@@ -1,0 +1,5 @@
+# English strings go here for Rails i18n
+de:
+  plugin_notice_successful_archived: Kategorie wurde archiviert.
+  plugin_notice_successful_unarchived: Kategorie wurde entarchiviert.
+  plugin_delete_button_note: Dies wird den Kategorie-Namen auch aus alten Tickets entfernen!
