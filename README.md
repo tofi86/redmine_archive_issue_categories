@@ -10,15 +10,15 @@ This Redmine plugin now allows you to archive issue categories. This means, to d
 This plugin is an attempt to solve redmine issue [#16188](http://www.redmine.org/issues/16188).
 
 * This plugin is tested with Redmine v2.5.x
-* This plugin is listed in the [redmine.org plugin repository](http://www.redmine.org/plugins/redmine_archive_categories)
+* This plugin is listed in the [redmine.org plugin repository](http://www.redmine.org/plugins/redmine_archive_issue_categories)
 
 
 Installation
 ------------
 
-* Clone or [download](https://github.com/tofi86/redmine_archive_categories/releases) this repo into your **redmine_root/plugins/** folder
+* Clone or [download](https://github.com/tofi86/redmine_archive_issue_categories/releases) this repo into your **redmine_root/plugins/** folder
 ```
-$ git clone https://github.com/tofi86/redmine_archive_categories.git
+$ git clone https://github.com/tofi86/redmine_archive_issue_categories.git
 ```
 * You have to run the plugin rake task *(from the Redmine root directory)* to provide the assets and migrate the database schema:
 ```
