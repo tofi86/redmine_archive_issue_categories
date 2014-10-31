@@ -9,7 +9,9 @@ This Redmine plugin now allows you to archive issue categories. This means, to d
 
 This plugin is an attempt to solve redmine issue [#16188](http://www.redmine.org/issues/16188).
 
-* This plugin is tested with Redmine v2.5.x
+* This plugin works with Redmine v2.5.x and v2.6
+  * *`master` branch contains plugin with support for Redmine v2.6*
+  * *Checkout branch `redmine/version-2.5` if you want support for Redmine v2.5*
 * This plugin is listed in the [redmine.org plugin repository](http://www.redmine.org/plugins/redmine_archive_issue_categories)
 
 
