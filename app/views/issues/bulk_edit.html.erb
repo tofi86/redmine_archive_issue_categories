@@ -23,7 +23,7 @@
 </ul>
 
 <%= form_tag(bulk_update_issues_path, :id => 'bulk_edit_form') do %>
-<%= @issues.collect {|i| hidden_field_tag('ids[]', i.id)}.join("\n").html_safe %>
+<%= @issues.collect {|i| hidden_field_tag('ids[]', i.id, :id => nil)}.join("\n").html_safe %>
 <div class="box tabular">
 <fieldset class="attributes">
 <legend><%= l(:label_change_properties) %></legend>
@@ -33,8 +33,9 @@
 <p>
   <label for="issue_project_id"><%= l(:field_project) %></label>
   <%= select_tag('issue[project_id]',
-                 content_tag('option', l(:label_no_change_option), :value => '') + 
-                   project_tree_options_for_select(@allowed_projects, :selected => @target_project),
+                 project_tree_options_for_select(@allowed_projects,
+                   :include_blank => ((!@copy || (@projects & @allowed_projects == @projects)) ? l(:label_no_change_option) : false),
+                   :selected => @target_project),
                  :onchange => "updateBulkEditFrom('#{escape_javascript url_for(:action => 'bulk_edit', :format => 'js')}')") %>
 </p>
 <% end %>
@@ -97,6 +98,14 @@
   </p>
 <% end %>
 
+<% if @copy && Setting.link_copied_issue == 'ask' %>
+<p>
+  <label for='link_copy'><%= l(:label_link_copied_issue) %></label>
+  <%= hidden_field_tag 'link_copy', '0' %>
+  <%= check_box_tag 'link_copy', '1', params[:link_copy] != 0 %>
+</p>
+<% end %>
+
 <% if @copy && @attachments_present %>
 <%= hidden_field_tag 'copy_attachments', '0' %>
 <p>
@@ -132,7 +141,7 @@
   <%= text_field_tag 'issue[parent_issue_id]', '', :size => 10, :value => @issue_params[:parent_issue_id] %>
   <label class="inline"><%= check_box_tag 'issue[parent_issue_id]', 'none', (@issue_params[:parent_issue_id] == 'none'), :id => nil, :data => {:disables => '#issue_parent_issue_id'} %><%= l(:button_clear) %></label>
 </p>
-<%= javascript_tag "observeAutocompleteField('issue_parent_issue_id', '#{escape_javascript auto_complete_issues_path(:project_id => @project)}')" %>
+<%= javascript_tag "observeAutocompleteField('issue_parent_issue_id', '#{escape_javascript auto_complete_issues_path(:project_id => @project, :scope => Setting.cross_project_subtasks)}')" %>
 <% end %>
 
 <% if @safe_attributes.include?('start_date') %>
