@@ -1,0 +1,5 @@
+# French strings go here for Rails i18n
+fr:
+  plugin_notice_successful_archived: Categorie archivée avec succès
+  plugin_notice_successful_unarchived: Categorie désarchivée avec succès.
+  plugin_delete_button_note: Ceci va aussi supprimer le nom de la catégorie des anciennes demandes
